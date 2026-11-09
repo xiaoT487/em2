@@ -37,8 +37,8 @@ add_executable(${CMAKE_PROJECT_NAME}
         user_config/bsp/ws2812/ws2812.c
         user_config/bsp/buzzer/buzzer.c
         user_config/bsp/buzzer/buzzer.h
-        user_config/bsp/usart/usart.c
-        user_config/bsp/usart/usart.h
+        user_config/bsp/usart/uart.c
+        user_config/bsp/usart/uart.h
         user_config/bsp/usart/buffer.c)
 
 # Add STM32CubeMX generated sources

@@ -3,7 +3,6 @@
 #define MIAO1_USART_H
 #include <usart.h>
 
-#define UART_TYPE_NUM 6
 #define BUFFER_SIZE 256
 #define COMMAND_MIN_LEN 4
 
@@ -14,10 +13,12 @@ typedef enum
     uart3,
     uart5,
     uart7,
-    uart10
+    uart10,
+    UART_TYPE_NUM
 } uart_type;
 
-void UART_send(uart_type device , uint8_t data , uint16_t length);
+void UART_send(uart_type device , uint8_t *data , uint16_t length);
+void UART_send_async(uart_type device , uint8_t *data , uint16_t length);
 
 void Command_tx_AddReadIndex(uart_type device , uint8_t length);
 void Command_rx_AddReadIndex(uart_type device , uint8_t length);
@@ -28,6 +29,7 @@ uint8_t Command_tx_GetLength(uart_type device);
 uint8_t Command_rx_GetLength(uart_type device);
 uint8_t Command_tx_GetRemain(uart_type device);
 uint8_t Command_rx_GetRemain(uart_type device);
+uint8_t Command_tx_GetContinuous(uart_type device, uint8_t **ptr);
 uint8_t Command_tx_Write(uart_type device , uint8_t *data, uint8_t length);
 uint8_t Command_rx_Write(uart_type device , uint8_t *data, uint8_t length);
 

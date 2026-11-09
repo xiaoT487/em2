@@ -1,6 +1,6 @@
 #include <string.h>
 
-#include "usart.h"
+#include "uart.h"
 
 uint8_t tx_buffer[UART_TYPE_NUM][BUFFER_SIZE];
 uint8_t rx_buffer[UART_TYPE_NUM][BUFFER_SIZE];
@@ -45,11 +45,19 @@ uint8_t Command_rx_GetLength(uart_type device) {
 }
 
 uint8_t Command_tx_GetRemain(uart_type device) {
-    return BUFFER_SIZE - Command_tx_GetLength(device);
+    return BUFFER_SIZE - 1 - Command_tx_GetLength(device);
 }
 
 uint8_t Command_rx_GetRemain(uart_type device) {
-    return BUFFER_SIZE - Command_rx_GetLength(device);
+    return BUFFER_SIZE - 1 - Command_rx_GetLength(device);
+}
+
+uint8_t Command_tx_GetContinuous(uart_type device, uint8_t **ptr)
+{
+    uint8_t  len    = Command_tx_GetLength(device);
+    uint16_t to_end = BUFFER_SIZE - tx_readindex[device];
+    *ptr = &tx_buffer[device][tx_readindex[device]];
+    return (len < to_end) ? len : (uint8_t)to_end;
 }
 
 uint8_t Command_tx_Write(uart_type device , uint8_t *data, uint8_t length) {
