@@ -19,11 +19,20 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "bdma.h"
+#include "dma.h"
+#include "spi.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
+#include <stdio.h>
+
+#include "string.h"
+#include "../../user_config/bsp/ws2812/ws2812.h"
+#include "bsp/buzzer/buzzer.h"
 
 /* USER CODE END Includes */
 
@@ -89,8 +98,15 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_BDMA_Init();
-  MX_LPUART1_UART_Init();
+  MX_DMA_Init();
+  MX_SPI6_Init();
+  MX_USART1_UART_Init();
+  MX_TIM12_Init();
   /* USER CODE BEGIN 2 */
+
+  HAL_UART_Init(&huart1);
+  MX_SPI6_Init();
+  HAL_TIM_PWM_Start(&htim12, TIM_CHANNEL_2);
 
   /* USER CODE END 2 */
 
@@ -98,6 +114,32 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    led_control(blue,100);
+    buzzer_alarm(50,500);
+    HAL_Delay(1000);
+    led_control(red,100);
+    buzzer_alarm(50,1000);
+    HAL_Delay(1000);
+    led_control(green,100);
+    buzzer_alarm(50,1500);
+    HAL_Delay(1000);
+    led_control(white,100);
+    buzzer_alarm(50,2000);
+    HAL_Delay(1000);
+    led_control(black,100);
+    buzzer_alarm(50,2500);
+    HAL_Delay(1000);
+    // if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_15) == GPIO_PIN_RESET)
+    // {
+    //   HAL_Delay(10);
+    //   if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_15) == GPIO_PIN_RESET)
+    //   {
+    //     buzzer_alarm(20);
+    //     led_control(red,100);
+    //     HAL_Delay(100);
+    //     buzzer_alarm(0);
+    //   }
+    // }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -127,7 +169,8 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.HSIState = RCC_HSI_DIV1;
   RCC_OscInitStruct.HSICalibrationValue = 64;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
@@ -167,6 +210,28 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM1 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM1)
+  {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+
+  /* USER CODE END Callback 1 */
+}
 
 /**
   * @brief  This function is executed in case of error occurrence.
