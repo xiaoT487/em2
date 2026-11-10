@@ -33,6 +33,7 @@
 #include "string.h"
 #include "../../user_config/bsp/ws2812/ws2812.h"
 #include "bsp/buzzer/buzzer.h"
+#include "bsp/usart/uart.h"
 
 /* USER CODE END Includes */
 
@@ -102,9 +103,14 @@ int main(void)
   MX_SPI6_Init();
   MX_USART1_UART_Init();
   MX_TIM12_Init();
+  MX_USART2_UART_Init();
+  MX_USART3_UART_Init();
+  MX_UART5_Init();
+  MX_UART7_Init();
+  MX_USART10_UART_Init();
   /* USER CODE BEGIN 2 */
 
-  HAL_UART_Init(&huart1);
+  uart_init();
   MX_SPI6_Init();
   HAL_TIM_PWM_Start(&htim12, TIM_CHANNEL_2);
 
@@ -115,19 +121,16 @@ int main(void)
   while (1)
   {
     led_control(blue,100);
-    buzzer_alarm(50,500);
-    HAL_Delay(1000);
+    buzzer_alarm(50,280);
+    HAL_Delay(300);
     led_control(red,100);
-    buzzer_alarm(50,1000);
-    HAL_Delay(1000);
+    buzzer_alarm(50,2400);
+    HAL_Delay(250);
     led_control(green,100);
-    buzzer_alarm(50,1500);
-    HAL_Delay(1000);
-    led_control(white,100);
-    buzzer_alarm(50,2000);
-    HAL_Delay(1000);
+    buzzer_alarm(50,1200);
+    HAL_Delay(280);
     led_control(black,100);
-    buzzer_alarm(50,2500);
+    buzzer_alarm(0,1200);
     HAL_Delay(1000);
     // if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_15) == GPIO_PIN_RESET)
     // {

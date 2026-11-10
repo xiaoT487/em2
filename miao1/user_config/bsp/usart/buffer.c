@@ -2,12 +2,12 @@
 
 #include "uart.h"
 
-uint8_t tx_buffer[UART_TYPE_NUM][BUFFER_SIZE];
-uint8_t rx_buffer[UART_TYPE_NUM][BUFFER_SIZE];
-uint8_t tx_writeindex[UART_TYPE_NUM];
-uint8_t rx_writeindex[UART_TYPE_NUM];
-static uint8_t tx_readindex[UART_TYPE_NUM];
-uint8_t rx_readindex[UART_TYPE_NUM];
+__attribute__((section(".RAM_D1"), aligned(32))) static uint8_t tx_buffer[UART_TYPE_NUM][BUFFER_SIZE];
+static uint8_t rx_buffer[UART_TYPE_NUM][BUFFER_SIZE];
+volatile static uint8_t tx_writeindex[UART_TYPE_NUM];
+volatile static uint8_t rx_writeindex[UART_TYPE_NUM];
+volatile static uint8_t tx_readindex[UART_TYPE_NUM];
+volatile static uint8_t rx_readindex[UART_TYPE_NUM];
 
 void Command_tx_AddReadIndex(uart_type device , uint8_t length)
 {
@@ -23,11 +23,6 @@ void Command_rx_AddReadIndex(uart_type device , uint8_t length)
 
 uint8_t Command_tx_Read(uart_type device , uint8_t i) {
     uint8_t index = i % BUFFER_SIZE;
-    return tx_buffer[device][index];
-}
-
-uint8_t Command_tx_Read_one(uart_type device) {
-    uint8_t index = (tx_readindex[device]++) % BUFFER_SIZE;
     return tx_buffer[device][index];
 }
 
@@ -93,5 +88,27 @@ uint8_t Command_rx_Write(uart_type device , uint8_t *data, uint8_t length) {
         memcpy(rx_buffer[device], data + firstLength, length - firstLength);
         rx_writeindex[device] = length - firstLength;
     }
+    return length;
+}
+
+uint8_t Command_rx_Peek(uart_type device, uint8_t offset)
+{
+    return Command_rx_Read(device, rx_readindex[device] + offset);
+}
+
+uint8_t Command_rx_ReadData(uart_type device, uint8_t *data, uint8_t length)
+{
+    if (Command_rx_GetLength(device) < length) {
+        length = Command_rx_GetLength(device);
+    }
+
+    if (rx_readindex[device] + length < BUFFER_SIZE) {
+        memcpy(data, rx_buffer[device] + rx_readindex[device], length);
+    } else {
+        uint8_t firstLength = BUFFER_SIZE - rx_readindex[device];
+        memcpy(data, rx_buffer[device] + rx_readindex[device], firstLength);
+        memcpy(data + firstLength, rx_buffer[device], length - firstLength);
+    }
+    Command_rx_AddReadIndex(device, length);
     return length;
 }
