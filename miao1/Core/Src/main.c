@@ -20,6 +20,7 @@
 #include "main.h"
 #include "bdma.h"
 #include "dma.h"
+#include "fdcan.h"
 #include "spi.h"
 #include "tim.h"
 #include "usart.h"
@@ -108,6 +109,9 @@ int main(void)
   MX_UART5_Init();
   MX_UART7_Init();
   MX_USART10_UART_Init();
+  MX_FDCAN1_Init();
+  MX_FDCAN2_Init();
+  MX_FDCAN3_Init();
   /* USER CODE BEGIN 2 */
 
   uart_init();
@@ -121,16 +125,16 @@ int main(void)
   while (1)
   {
     led_control(blue,100);
-    buzzer_alarm(50,280);
+    // buzzer_alarm(50,280);
     HAL_Delay(300);
     led_control(red,100);
-    buzzer_alarm(50,2400);
+    // buzzer_alarm(50,2400);
     HAL_Delay(250);
     led_control(green,100);
-    buzzer_alarm(50,1200);
+    // buzzer_alarm(50,1200);
     HAL_Delay(280);
     led_control(black,100);
-    buzzer_alarm(0,1200);
+    // buzzer_alarm(0,1200);
     HAL_Delay(1000);
     // if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_15) == GPIO_PIN_RESET)
     // {
@@ -179,13 +183,13 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLM = 4;
-  RCC_OscInitStruct.PLL.PLLN = 34;
+  RCC_OscInitStruct.PLL.PLLN = 30;
   RCC_OscInitStruct.PLL.PLLP = 1;
-  RCC_OscInitStruct.PLL.PLLQ = 2;
+  RCC_OscInitStruct.PLL.PLLQ = 4;
   RCC_OscInitStruct.PLL.PLLR = 2;
   RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_3;
   RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
-  RCC_OscInitStruct.PLL.PLLFRACN = 3072;
+  RCC_OscInitStruct.PLL.PLLFRACN = 0;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();

@@ -39,7 +39,9 @@ add_executable(${CMAKE_PROJECT_NAME}
         user_config/bsp/buzzer/buzzer.h
         user_config/bsp/usart/uart.c
         user_config/bsp/usart/uart.h
-        user_config/bsp/usart/buffer.c)
+        user_config/bsp/usart/buffer.c
+        user_config/bsp/can/user_can.c
+        user_config/bsp/can/user_can.h)
 
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)

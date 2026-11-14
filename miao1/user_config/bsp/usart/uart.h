@@ -12,7 +12,7 @@ typedef enum
     uart2,
     uart3,
     uart5,
-    uart7,
+    uart7, 
     uart10,
     UART_TYPE_NUM
 } uart_type;
