@@ -41,7 +41,14 @@ add_executable(${CMAKE_PROJECT_NAME}
         user_config/bsp/usart/uart.h
         user_config/bsp/usart/buffer.c
         user_config/bsp/can/user_can.c
-        user_config/bsp/can/user_can.h)
+        user_config/bsp/can/user_can.h
+        user_config/bsp/imu/bmi088/BMI088driver.c
+        user_config/bsp/imu/bmi088/BMI088driver.h
+        user_config/bsp/imu/bmi088/BMI088Middleware.c
+        user_config/bsp/imu/bmi088/BMI088Middleware.h
+        user_config/bsp/imu/bmi088/BMI088reg.h
+        user_config/bsp/imu/imu.c
+        user_config/bsp/imu/imu.h)
 
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
@@ -62,6 +69,11 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined include paths
         user_config
         user_config/bsp/ws2812
+        user_config/bsp/buzzer
+        user_config/bsp/usart
+        user_config/bsp/can
+        user_config/bsp/imu
+        user_config/bsp/imu/bmi088
 )
 
 # Add project symbols (macros)

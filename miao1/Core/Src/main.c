@@ -31,6 +31,7 @@
 
 #include <stdio.h>
 
+#include "BMI088driver.h"
 #include "string.h"
 #include "../../user_config/bsp/ws2812/ws2812.h"
 #include "bsp/buzzer/buzzer.h"
@@ -112,11 +113,16 @@ int main(void)
   MX_FDCAN1_Init();
   MX_FDCAN2_Init();
   MX_FDCAN3_Init();
+  MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
 
+  BMI088_init();
   uart_init();
   MX_SPI6_Init();
   HAL_TIM_PWM_Start(&htim12, TIM_CHANNEL_2);
+
+  const char *msg = "hello\r\n";
+
 
   /* USER CODE END 2 */
 
@@ -124,6 +130,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
     led_control(blue,100);
     // buzzer_alarm(50,280);
     HAL_Delay(300);
@@ -136,6 +143,9 @@ int main(void)
     led_control(black,100);
     // buzzer_alarm(0,1200);
     HAL_Delay(1000);
+
+    UART_send_async(uart1, (uint8_t *)msg, strlen(msg));
+
     // if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_15) == GPIO_PIN_RESET)
     // {
     //   HAL_Delay(10);

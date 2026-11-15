@@ -18,14 +18,14 @@ typedef enum
 
 typedef enum
 {
-    OK,
-    DEVICE_EXCEED_MAX,
-    EMPTY_DATA,
-    ID_ERROR,
-    ID_REPEAT,
-    REGISTER_ERROR,
     LEN_ERROR,
-    ADD_MESSAGE_ERROR,
+    OK = -1,
+    DEVICE_EXCEED_MAX = -2,
+    EMPTY_DATA = -3,
+    ID_ERROR = -4,
+    ID_REPEAT = -5,
+    REGISTER_ERROR = -6,
+    ADD_MESSAGE_ERROR = -7,
 } can_feedback;
 
 typedef void (*can_callback)(can_type device, uint32_t id, const uint8_t *data, size_t len);
