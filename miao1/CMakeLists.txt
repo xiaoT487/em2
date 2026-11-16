@@ -48,7 +48,9 @@ add_executable(${CMAKE_PROJECT_NAME}
         user_config/bsp/imu/bmi088/BMI088Middleware.h
         user_config/bsp/imu/bmi088/BMI088reg.h
         user_config/bsp/imu/imu.c
-        user_config/bsp/imu/imu.h)
+        user_config/bsp/imu/imu.h
+        user_config/app/freeRTOS/led_task/led_task.c
+        user_config/app/freeRTOS/led_task/led_task.h)
 
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
@@ -74,6 +76,8 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
         user_config/bsp/can
         user_config/bsp/imu
         user_config/bsp/imu/bmi088
+        user_config/app/freeRTOS
+        user_config/app/freeRTOS/led_task
 )
 
 # Add project symbols (macros)
