@@ -1,6 +1,6 @@
 
 #include "imu.h"
-#include "BMI088driver.h"
+#include "bmi088/BMI088driver.h"
 
 void imu_read(imu_data *imu_data)
 {

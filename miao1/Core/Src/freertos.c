@@ -23,11 +23,10 @@
 #include "main.h"
 #include "FreeRTOS.h"
 #include "cmsis_os2.h"
+#include "ws2812.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
-#include "led_task.h"
 
 /* USER CODE END Includes */
 
@@ -50,12 +49,12 @@
 /* USER CODE BEGIN Variables */
 
 /* USER CODE END Variables */
-/* Definitions for led_task */
-osThreadId_t led_taskHandle;
-const osThreadAttr_t led_task_attributes = {
-  .name = "led_task",
-  .stack_size = 256 * 4,
-  .priority = (osPriority_t) osPriorityBelowNormal,
+/* Definitions for task_status */
+osThreadId_t task_statusHandle;
+const osThreadAttr_t task_status_attributes = {
+  .name = "task_status",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -63,7 +62,7 @@ const osThreadAttr_t led_task_attributes = {
 
 /* USER CODE END FunctionPrototypes */
 
-void Startled_task(void *argument);
+void Starttask_status(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -94,8 +93,8 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
-  /* creation of led_task */
-  led_taskHandle = osThreadNew(Startled_task, NULL, &led_task_attributes);
+  /* creation of task_status */
+  task_statusHandle = osThreadNew(Starttask_status, NULL, &task_status_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -107,13 +106,13 @@ void MX_FREERTOS_Init(void) {
 
 }
 
-/* USER CODE BEGIN Header_Startled_task */
+/* USER CODE BEGIN Header_Starttask_status */
 /**
-  * @brief  Function implementing the led_task thread.
+  * @brief  Function implementing the task_status thread.
   * @param  argument: Not used
   * @retval None
   */
-/* USER CODE END Header_Startled_task */
+/* USER CODE END Header_Starttask_status */
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */

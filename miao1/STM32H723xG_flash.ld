@@ -191,18 +191,6 @@ SECTIONS
   PROVIDE( __data_source = LOADADDR(.data) );
   PROVIDE( __data_source_end = __tdata_source_end );
   PROVIDE( __data_source_size = __data_source_end - __data_source );
-  /* DMA 缓冲区专用段：必须落在 D1 域 AXI SRAM (0x24000000)。
-     原因：STM32H7 的 DMA1/DMA2 无法访问 DTCM(0x20000000)，
-     若该段被链接器当作孤儿段塞进 DTCM，DMA 会报传输错误。
-     NOLOAD：不需要从 Flash 拷贝初值，也不占用 Flash 空间。 */
-  .RAM_D1 (NOLOAD) :
-  {
-    . = ALIGN(32);
-    *(.RAM_D1)
-    *(.RAM_D1*)
-    . = ALIGN(32);
-  } >RAM_D1
-
   /* Uninitialized data section */
   .tbss (NOLOAD) : ALIGN(4)
   {

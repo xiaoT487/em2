@@ -255,18 +255,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
     HAL_NVIC_SetPriority(SPI6_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(SPI6_IRQn);
   /* USER CODE BEGIN SPI6_MspInit 1 */
-  {
-    /* CubeMX 默认给 AF 脚配 GPIO_SPEED_FREQ_LOW，SPI6 跑 6.25MHz 时
-       SCK/MOSI 的边沿会被拖糊，WS2812 的高电平宽度就跟着失真。
-       这里在生成代码之后重新配一遍，提到 VERY_HIGH */
-    GPIO_InitTypeDef gpio = {0};
-    gpio.Pin       = GPIO_PIN_5 | GPIO_PIN_7;
-    gpio.Mode      = GPIO_MODE_AF_PP;
-    gpio.Pull      = GPIO_NOPULL;
-    gpio.Speed     = GPIO_SPEED_FREQ_VERY_HIGH;
-    gpio.Alternate = GPIO_AF8_SPI6;
-    HAL_GPIO_Init(GPIOA, &gpio);
-  }
+
   /* USER CODE END SPI6_MspInit 1 */
   }
 }
