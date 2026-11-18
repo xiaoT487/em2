@@ -23,7 +23,6 @@
 #include "main.h"
 #include "FreeRTOS.h"
 #include "cmsis_os2.h"
-#include "ws2812.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -56,6 +55,13 @@ const osThreadAttr_t task_status_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
+/* Definitions for Communication */
+osThreadId_t CommunicationHandle;
+const osThreadAttr_t Communication_attributes = {
+  .name = "Communication",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -63,6 +69,7 @@ const osThreadAttr_t task_status_attributes = {
 /* USER CODE END FunctionPrototypes */
 
 void Starttask_status(void *argument);
+void StartCommunication(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -96,6 +103,9 @@ void MX_FREERTOS_Init(void) {
   /* creation of task_status */
   task_statusHandle = osThreadNew(Starttask_status, NULL, &task_status_attributes);
 
+  /* creation of Communication */
+  CommunicationHandle = osThreadNew(StartCommunication, NULL, &Communication_attributes);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -113,6 +123,15 @@ void MX_FREERTOS_Init(void) {
   * @retval None
   */
 /* USER CODE END Header_Starttask_status */
+
+/* USER CODE BEGIN Header_StartCommunication */
+/**
+* @brief Function implementing the Communication thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartCommunication */
+
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */

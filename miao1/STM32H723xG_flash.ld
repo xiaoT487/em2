@@ -241,7 +241,18 @@ SECTIONS
     . = ALIGN(8);
   } >DTCMRAM
 
-
+  /* DMA buffers that must be reachable by DMA1/DMA2/BDMA.
+     DTCMRAM (0x20000000) is CPU-only and cannot be accessed by any DMA master,
+     so .RAM_D1 must be given a real output section in the RAM_D1 region. */
+  .ram_d1 (NOLOAD) :
+  {
+    . = ALIGN(32);
+    __ram_d1_start = .;
+    *(.RAM_D1)
+    *(.RAM_D1*)
+    . = ALIGN(32);
+    __ram_d1_end = .;
+  } >RAM_D1
 
   /* Remove information from the standard libraries */
   /DISCARD/ :

@@ -36,7 +36,9 @@
 #include "string.h"
 #include "../../user_config/bsp/ws2812/ws2812.h"
 #include "bsp/buzzer/buzzer.h"
+#include "bsp/can/user_can.h"
 #include "bsp/usart/uart.h"
+#include "freeRTOS/task_status/task_status.h"
 
 /* USER CODE END Includes */
 
@@ -70,6 +72,14 @@ void MX_FREERTOS_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+void on_0x101(can_type device, uint32_t id, const uint8_t *data, size_t len)
+{
+    (void)device;
+    (void)id;
+    (void)data;
+    (void)len;
+}
 
 /* USER CODE END 0 */
 
@@ -117,10 +127,18 @@ int main(void)
   MX_FDCAN3_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
+  HAL_TIM_PWM_Start(&htim12, TIM_CHANNEL_2);
+
+  led_control(green , 100);
+  buzzer_alarm(30,100);
+  HAL_Delay(200);
+  buzzer_alarm(0,100);
 
   uart_init();
   MX_SPI6_Init();
-  HAL_TIM_PWM_Start(&htim12, TIM_CHANNEL_2);
+  can_init(can1);
+
+  can_id_register(can1, 0x101, on_0x101);
 
   /* USER CODE END 2 */
 
@@ -137,18 +155,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
-    // if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_15) == GPIO_PIN_RESET)
-    // {
-    //   HAL_Delay(10);
-    //   if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_15) == GPIO_PIN_RESET)
-    //   {
-    //     buzzer_alarm(20);
-    //     led_control(red,100);
-    //     HAL_Delay(100);
-    //     buzzer_alarm(0);
-    //   }
-    // }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

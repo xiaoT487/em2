@@ -102,7 +102,7 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *h)
         if (handle[i] == h)
         {
             Command_tx_AddReadIndex(i, tx_len[i]);
-            UART_start_tx(i); 
+            UART_start_tx(i);
             break;
         }
     }

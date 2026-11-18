@@ -34,34 +34,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6be1bda-583e-4983-b534-435581a294f5" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsonSchemas.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/miao1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/miao1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_config/app/freeRTOS/Communication/communication.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_config/app/freeRTOS/Communication/communication.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/freertos.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/freertos.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/spi.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/spi.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/usart.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/usart.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/STM32H723xG_flash.ld" beforeDir="false" afterPath="$PROJECT_DIR$/STM32H723xG_flash.ld" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/STM32H723xG_flash.ld.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake/starm-clang.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/starm-clang.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/stm32cubemx/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/stm32cubemx/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/miao1.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/miao1.ioc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_config/app/freeRTOS/led_task/led_task.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_config/app/freeRTOS/led_task/led_task.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_config/bsp/buzzer/buzzer.c" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/bsp/buzzer/buzzer.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_config/bsp/buzzer/buzzer.h" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/bsp/buzzer/buzzer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_config/bsp/can/user_can.c" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/bsp/can/user_can.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_config/app/freeRTOS/task_status/task_status.c" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/app/freeRTOS/task_status/task_status.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user_config/bsp/can/user_can.h" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/bsp/can/user_can.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_config/bsp/imu/imu.c" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/bsp/imu/imu.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_config/bsp/usart/buffer.c" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/bsp/usart/buffer.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user_config/bsp/usart/uart.c" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/bsp/usart/uart.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_config/bsp/usart/uart.h" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/bsp/usart/uart.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_config/bsp/ws2812/ws2812.c" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/bsp/ws2812/ws2812.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_config/bsp/ws2812/ws2812.h" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/bsp/ws2812/ws2812.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,11 +134,6 @@
     </key>
   </component>
   <component name="RunManager" selected="OpenOCD 下载并运行.miao1">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="STM32_Drivers" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="miao1" TARGET_NAME="STM32_Drivers" CONFIG_NAME="Debug - Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />

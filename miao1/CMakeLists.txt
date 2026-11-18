@@ -50,7 +50,9 @@ add_executable(${CMAKE_PROJECT_NAME}
         user_config/bsp/imu/imu.c
         user_config/bsp/imu/imu.h
         user_config/app/freeRTOS/task_status/task_status.c
-        user_config/app/freeRTOS/task_status/task_status.h)
+        user_config/app/freeRTOS/task_status/task_status.h
+        user_config/app/freeRTOS/Communication/communication.c
+        user_config/app/freeRTOS/Communication/communication.h)
 
 
 # Add STM32CubeMX generated sources
