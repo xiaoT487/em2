@@ -109,7 +109,9 @@ target_link_libraries(STM32_Drivers PUBLIC stm32cubemx)
 
 
 # Create FreeRTOS static library
-add_library(FreeRTOS OBJECT)
+add_library(FreeRTOS OBJECT
+		../../user_config/app/PID/PID.c
+		../../user_config/app/PID/PID.h)
 target_sources(FreeRTOS PRIVATE ${FreeRTOS_Src})
 target_link_libraries(FreeRTOS PUBLIC stm32cubemx)
 

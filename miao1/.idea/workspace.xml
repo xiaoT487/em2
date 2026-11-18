@@ -34,18 +34,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6be1bda-583e-4983-b534-435581a294f5" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/user_config/app/freeRTOS/Communication/communication.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user_config/app/freeRTOS/Communication/communication.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_config/app/PID/PID.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user_config/app/PID/PID.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/freertos.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/freertos.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/STM32H723xG_flash.ld" beforeDir="false" afterPath="$PROJECT_DIR$/STM32H723xG_flash.ld" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake/stm32cubemx/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/stm32cubemx/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/miao1.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/miao1.ioc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_config/app/freeRTOS/task_status/task_status.c" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/app/freeRTOS/task_status/task_status.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_config/bsp/can/user_can.h" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/bsp/can/user_can.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_config/bsp/usart/uart.c" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/bsp/usart/uart.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +52,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://D:/study/project/old/em2（add can）/em2-51730a07ed8fe5dab9244f369ee0ad604724008a/miao1/Core/Src/freertos.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/study/project/em2/miao1/Core/Src/main.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/study/project/em2/miao1/user_config/app/freeRTOS/task_status/task_status.c" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/study/project/em2/miao1/user_config/bsp/ws2812/ws2812.c" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="xhWc1067" />
@@ -135,6 +130,11 @@
   </component>
   <component name="RunManager" selected="OpenOCD 下载并运行.miao1">
     <configuration name="STM32_Drivers" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="miao1" TARGET_NAME="STM32_Drivers" CONFIG_NAME="Debug - Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
