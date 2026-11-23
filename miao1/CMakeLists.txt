@@ -54,7 +54,14 @@ add_executable(${CMAKE_PROJECT_NAME}
         user_config/app/freeRTOS/Communication/communication.c
         user_config/app/freeRTOS/Communication/communication.h
         user_config/app/PID/PID.c
-        user_config/app/PID/PID.h)
+        user_config/app/PID/PID.h
+        user_config/components/motor/dji/dji_motor.c
+        user_config/components/motor/dji/dji_motor.h
+        user_config/app/freeRTOS/motor_control/motor_ctrl.c
+        user_config/app/freeRTOS/motor_control/motor_ctrl.h
+        user_config/components/motor/dm/dm_motor.c
+        user_config/components/motor/dm/dm_motor.h
+)
 
 
 # Add STM32CubeMX generated sources

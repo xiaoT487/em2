@@ -29,6 +29,16 @@ void StartCommunication(void *argument)
         //     tx_err++;                             /* 队列满 / 外设没 Start / 长度非法 */
         // }
         // osDelay(100);
+
+        // osDelay(3000);
+        // task_start();
+        // osDelay(2000);
+        // task_end(TASK_OK);
+        // osDelay(3000);
+        // task_start();
+        // osDelay(2000);
+        // task_end(TASK_ERROR);
+        osDelay(1);
     }
     /* USER CODE END StartCommunication */
 }

@@ -62,6 +62,13 @@ const osThreadAttr_t Communication_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
+/* Definitions for motor_ctrl */
+osThreadId_t motor_ctrlHandle;
+const osThreadAttr_t motor_ctrl_attributes = {
+  .name = "motor_ctrl",
+  .stack_size = 512 * 4,
+  .priority = (osPriority_t) osPriorityNormal5,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -70,6 +77,7 @@ const osThreadAttr_t Communication_attributes = {
 
 void Starttask_status(void *argument);
 void StartCommunication(void *argument);
+void Startmotor_ctrl(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -106,6 +114,9 @@ void MX_FREERTOS_Init(void) {
   /* creation of Communication */
   CommunicationHandle = osThreadNew(StartCommunication, NULL, &Communication_attributes);
 
+  /* creation of motor_ctrl */
+  motor_ctrlHandle = osThreadNew(Startmotor_ctrl, NULL, &motor_ctrl_attributes);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -131,6 +142,15 @@ void MX_FREERTOS_Init(void) {
 * @retval None
 */
 /* USER CODE END Header_StartCommunication */
+
+
+/* USER CODE BEGIN Header_Startmotor_ctrl */
+/**
+* @brief Function implementing the motor_ctrl thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_Startmotor_ctrl */
 
 
 /* Private application code --------------------------------------------------*/

@@ -91,7 +91,9 @@ void Starttask_status(void *argument)
                     task_alarm();
                 if (task_link_status == 2)
                     task_normal();
-                osDelay(20);
+                osDelay(300);
+                led_control(black,   100);
+                osDelay(1000);
             }
         }
 

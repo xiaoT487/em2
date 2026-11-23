@@ -73,13 +73,13 @@ void MX_FREERTOS_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-void on_0x101(can_type device, uint32_t id, const uint8_t *data, size_t len)
-{
-    (void)device;
-    (void)id;
-    (void)data;
-    (void)len;
-}
+// void on_0x101(can_type device, uint32_t id, const uint8_t *data, size_t len)
+// {
+//     (void)device;
+//     (void)id;
+//     (void)data;
+//     (void)len;
+// }
 
 /* USER CODE END 0 */
 
@@ -138,7 +138,7 @@ int main(void)
   MX_SPI6_Init();
   can_init(can1);
 
-  can_id_register(can1, 0x101, on_0x101);
+  // can_id_register(can1, 0x101, on_0x101);
 
   /* USER CODE END 2 */
 
