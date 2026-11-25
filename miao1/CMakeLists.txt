@@ -55,6 +55,8 @@ add_executable(${CMAKE_PROJECT_NAME}
         user_config/app/freeRTOS/Communication/communication.h
         user_config/app/PID/PID.c
         user_config/app/PID/PID.h
+        user_config/app/ins/ins.c
+        user_config/app/ins/ins.h
         user_config/components/motor/dji/dji_motor.c
         user_config/components/motor/dji/dji_motor.h
         user_config/app/freeRTOS/motor_control/motor_ctrl.c
@@ -84,6 +86,9 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
         user_config
         user_config/bsp/ws2812
         user_config/app
+        user_config/app/ins
+        user_config/bsp/imu
+        user_config/bsp/usart
 )
 
 # Add project symbols (macros)

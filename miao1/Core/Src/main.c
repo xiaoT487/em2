@@ -39,6 +39,7 @@
 #include "bsp/can/user_can.h"
 #include "bsp/usart/uart.h"
 #include "freeRTOS/task_status/task_status.h"
+#include "app/ins/ins.h"
 
 /* USER CODE END Includes */
 
@@ -72,14 +73,6 @@ void MX_FREERTOS_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-// void on_0x101(can_type device, uint32_t id, const uint8_t *data, size_t len)
-// {
-//     (void)device;
-//     (void)id;
-//     (void)data;
-//     (void)len;
-// }
 
 /* USER CODE END 0 */
 
@@ -135,10 +128,8 @@ int main(void)
   buzzer_alarm(0,100);
 
   uart_init();
-  MX_SPI6_Init();
+  ins_init();
   can_init(can1);
-
-  // can_id_register(can1, 0x101, on_0x101);
 
   /* USER CODE END 2 */
 
