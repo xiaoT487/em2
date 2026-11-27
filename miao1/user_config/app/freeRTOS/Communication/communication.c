@@ -1,44 +1,32 @@
 
 #include "communication.h"
 
+#include <stdio.h>
 #include <string.h>
 
 #include "cmsis_os2.h"
 #include "bsp/can/user_can.h"
 #include "bsp/usart/uart.h"
+#include "components/remote/HT-10A/remote_HT-10A.h"
 #include "freeRTOS/task_status/task_status.h"
 
 void StartCommunication(void *argument)
 {
     /* USER CODE BEGIN StartCommunication */
-    /* 放到循环外面：放里面每轮都被清零，发出去的数据永远是同一个值 */
-    uint8_t tx[8] = {0};
-    static volatile uint32_t tx_ok;      /* 调试器里能直接看到 */
-    static volatile uint32_t tx_err;
+    static uint8_t buff[128];
+    HT_10A_feedback j;
 
     /* Infinite loop */
     for(;;)
     {
-        // tx[0]++;                                  /* 每次变化一下好认 */
-        // if (can_send(can1, 0x101, tx, 8) == OK)   /* 成功是 OK(-1) */
-        // {
-        //     tx_ok++;
-        // }
-        // else
-        // {
-        //     tx_err++;                             /* 队列满 / 外设没 Start / 长度非法 */
-        // }
-        // osDelay(100);
+        j = ht_10a_feedback_send();
 
-        // osDelay(3000);
-        // task_start();
-        // osDelay(2000);
-        // task_end(TASK_OK);
-        // osDelay(3000);
-        // task_start();
-        // osDelay(2000);
-        // task_end(TASK_ERROR);
-        osDelay(1);
+        (void)snprintf(buff, sizeof buff,
+                "%4d,%4d,%4d,%4d,%4d,%4d,%4d,%4d,%4d,%4d,%4d,%4d,%4d,%4d,%4d,%4d\r\n",
+                j.r_x,j.r_y,j.l_x,j.l_y,j.swa,j.swb,j.swc,j.swd,j.vra,j.vrb,j.time);
+
+        UART_send_async(uart1, buff, (uint16_t)strlen(buff));
+        osDelay(50);
     }
     /* USER CODE END StartCommunication */
 }

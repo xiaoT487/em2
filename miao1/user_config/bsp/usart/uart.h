@@ -6,6 +6,8 @@
 #define BUFFER_SIZE 256
 #define RX_DMA_SIZE 128
 
+#define UART5_SBUS_INVERT 0
+
 typedef enum
 {
     uart1,

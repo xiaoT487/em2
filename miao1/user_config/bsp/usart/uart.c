@@ -23,6 +23,10 @@ void uart_init(void)
     HAL_UART_Init(&huart7);
     HAL_UART_Init(&huart10);
 
+#if UART5_SBUS_INVERT
+    huart5.Instance->CR2 |= USART_CR2_RXINV;
+#endif
+
     for (int i=0;i<UART_TYPE_NUM;i++)
     {
         UART_receive(i);
