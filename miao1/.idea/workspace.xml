@@ -35,14 +35,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c6be1bda-583e-4983-b534-435581a294f5" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/miao1.ioc" beforeDir="false" afterPath="$PROJECT_DIR$/miao1.ioc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_config/app/freeRTOS/Communication/communication.c" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/app/freeRTOS/Communication/communication.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_config/bsp/usart/buffer.c" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/bsp/usart/buffer.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_config/bsp/usart/uart.c" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/bsp/usart/uart.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/Src/freertos.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/freertos.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user_config/bsp/usart/uart.h" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/bsp/usart/uart.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_config/components/remote/HT-10A/remote_HT-10A.c" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/components/remote/remote.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_config/components/remote/HT-10A/remote_HT-10A.h" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/components/remote/remote.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_config/components/remote/remote.c" beforeDir="false" afterPath="$PROJECT_DIR$/user_config/components/remote/remote.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

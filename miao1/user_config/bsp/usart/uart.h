@@ -8,7 +8,7 @@
 
 #define UART5_SBUS_INVERT 0
 
-volatile uint32_t  rx_time;
+extern volatile uint32_t  rx_time;
 
 typedef enum
 {

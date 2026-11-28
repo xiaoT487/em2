@@ -147,7 +147,6 @@ void MX_FREERTOS_Init(void) {
   */
 /* USER CODE END Header_Starttask_status */
 
-
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
 
