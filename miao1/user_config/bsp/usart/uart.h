@@ -8,6 +8,8 @@
 
 #define UART5_SBUS_INVERT 0
 
+volatile uint32_t  rx_time;
+
 typedef enum
 {
     uart1,
@@ -37,5 +39,6 @@ uint8_t Command_tx_Write(uart_type device , uint8_t *data, uint8_t length);
 uint8_t Command_rx_Write(uart_type device , uint8_t *data, uint8_t length);
 uint8_t Command_rx_Peek(uart_type device, uint8_t offset);
 uint8_t Command_rx_ReadData(uart_type device, uint8_t *data, uint8_t length);
+void clear_rx_buffer(uart_type device);
 
 #endif //MIAO1_USART_H

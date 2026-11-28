@@ -112,3 +112,8 @@ uint8_t Command_rx_ReadData(uart_type device, uint8_t *data, uint8_t length)
     Command_rx_AddReadIndex(device, length);
     return length;
 }
+
+void clear_rx_buffer(uart_type device)
+{
+    rx_readindex[device] = rx_writeindex[device];
+}

@@ -63,8 +63,8 @@ add_executable(${CMAKE_PROJECT_NAME}
         user_config/app/freeRTOS/motor_control/motor_ctrl.h
         user_config/components/motor/dm/dm_motor.c
         user_config/components/motor/dm/dm_motor.h
-        user_config/components/remote/HT-10A/remote_HT-10A.c
-        user_config/components/remote/HT-10A/remote_HT-10A.h
+        user_config/components/remote/remote.c
+        user_config/components/remote/remote.h
 )
 
 

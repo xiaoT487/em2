@@ -14,6 +14,8 @@ __attribute__((section(".RAM_D1"), aligned(32))) static uint8_t rx_dma[UART_TYPE
 static volatile uint8_t tx_busy[UART_TYPE_NUM];
 static volatile uint8_t tx_len[UART_TYPE_NUM];
 
+volatile uint32_t  rx_time = 0;
+
 void uart_init(void)
 {
     HAL_UART_Init(&huart1);
@@ -97,6 +99,7 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *h, uint16_t Size)
 
     Command_rx_Write(device, rx_dma[device], Size);
     UART_receive(device);
+    rx_time = HAL_GetTick();
 }
 
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *h)
